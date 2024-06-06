@@ -12,14 +12,11 @@ baseURL: str = os.environ.get('API_URL')
 apiKey: str = os.environ.get('API_KEY')
 
 headers = {'Accept': 'application/json'}
+params = {'key': apiKey}
 
-# Games route
-@app.get('/games')
-def get_games():
-  endpoint = '/games'
-  params = {'key': apiKey}
+# Generic route for collections
+@app.get('/<endpoint>')
+def get_all(endpoint):
   params.update(request.args) # The URL query args
-
-  res = requests.get(baseURL + endpoint, headers=headers, params=params)
-
+  res = requests.get(baseURL + request.path, headers=headers, params=params)
   return res.json()
