@@ -7,7 +7,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:5173', 'https://game-codex-pi.vercel.app'])
+CORS(app, origins=[os.environ.get('CORS_ALLOWED')])
 
 load_dotenv()
 baseURL: str = os.environ.get('API_URL')
