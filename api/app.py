@@ -1,11 +1,13 @@
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 import requests
 from requests.auth import HTTPBasicAuth
 
 app = Flask(__name__)
+CORS(app, origins=['https://game-codex-pi.vercel.app'])
 
 load_dotenv()
 baseURL: str = os.environ.get('API_URL')
