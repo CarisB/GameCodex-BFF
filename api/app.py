@@ -7,7 +7,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 app = Flask(__name__)
-CORS(app, origins=[os.environ.get('CORS_ALLOWED')])
+CORS(app)
 
 load_dotenv()
 baseURL: str = os.environ.get('API_URL')
